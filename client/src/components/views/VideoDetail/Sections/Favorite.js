@@ -2,11 +2,14 @@ import React, { useEffect,useState } from 'react'
 import Axios from 'axios'
 
 function Favorite(props) {
+    console.log('props.movieInfo:',props.movieInfo)
     const userId =localStorage.getItem('userId');
     const [Favorited,setFavorited] = useState(false);
     const [FavoriteNumber,setFavoriteNumber] = useState(0);
     const body = {
         movieId : props.movieId,
+        movieTitle : props.movieInfo.original_title,
+        movieRunTime :props.movieInfo.runtime,
         userFrom: userId
     }
     useEffect(()=>{

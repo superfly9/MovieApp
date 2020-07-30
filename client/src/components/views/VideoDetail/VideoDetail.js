@@ -53,6 +53,7 @@ function VideoDetail(props) {
                     <Row lg={6} md={8} xs={24} gutter={[16,16]}>
                         {CrewInfo && CrewInfo.map((crewInfo,index)=>(
                             <GridCard 
+                                key={index}
                                 image={`${IMAGE_BASE_URL}w500/${crewInfo.profile_path}`}
                             />
                         ))}

@@ -1,0 +1,14 @@
+table {
+    width: 100%;
+    border: 1px solid black;
+}
+thead {
+    font-weight: bold;
+}
+tr,td {
+    border: 1px solid black;
+    padding: .5rem;
+}
+button {
+    width: 20%;
+}

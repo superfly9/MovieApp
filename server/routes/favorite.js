@@ -35,12 +35,23 @@ favoriteRouter.post('/removeFromFavorite',(req,res)=>{
 })
 
 favoriteRouter.post('/addToFavorite',async (req,res)=>{
-    console.log(req.body)
+    console.log('add To:',req.body)
     const newFavorite = await new Favorite(req.body);
     newFavorite.save((err,favorite)=>{
+        console.log('Added Favor:',favorite)
         if (err) return res.json({err,success:false});
         res.json({success:true})
     })
+})
+
+favoriteRouter.post('/getFavoredMovie',(req,res)=>{
+    const {body : {userFrom}}=req;
+    Favorite.find({userFrom})
+        .exec((err,favorites)=>{
+            console.log('favorited:',favorites)
+            if (err) return res.json({err,success:false});
+            res.json({favorites,success:true})
+        })
 })
 
 module.exports  = favoriteRouter;
