@@ -5,11 +5,11 @@ function Favorite(props) {
     const userId =localStorage.getItem('userId');
     const [Favorited,setFavorited] = useState(false);
     const [FavoriteNumber,setFavoriteNumber] = useState(0);
+    const body = {
+        movieId : props.movieId,
+        userFrom: userId
+    }
     useEffect(()=>{
-        const body = {
-            movieId : props.movieId,
-            userFrom: userId
-        }
         Axios.post('/api/favorite/favoriteNumber',body)
             .then(response=>{
                 if (response.data.success) {
@@ -28,9 +28,34 @@ function Favorite(props) {
                 }
             })
     },[])
+
+    const handleFavorite=()=>{
+        console.log('Favorited:',Favorited)
+        if (Favorited) {
+            Axios.post('/api/favorite/removeFromFavorite',body)
+                .then(response=>{
+                    if (response.data.success) {
+                        setFavoriteNumber(FavoriteNumber-1);
+                        setFavorited(!Favorited)
+                    } else {
+                        alert('정보를 가져 오는데 실패했습니다.')
+                    }
+                })
+        } else {
+            Axios.post('/api/favorite/addToFavorite',body)
+            .then(response=>{
+                if (response.data.success) {
+                    setFavoriteNumber(FavoriteNumber+1);
+                    setFavorited(!Favorited)
+                } else {
+                    alert('정보를 가져 오는데 실패했습니다.')
+                }
+            })
+        }
+    }
     return (
         <div style={{display:'flex',justifyContent:'flex-end'}}>
-            <button style={{padding:'0.2rem .5rem'}}>{Favorited ? 'Not Favorite' : 'Add to Favorite'} {FavoriteNumber}</button>
+            <button onClick={handleFavorite} style={{padding:'0.2rem .5rem'}}>{Favorited ? 'Not Favorite' : 'Add to Favorite'} {FavoriteNumber}</button>
         </div>
     )
 }

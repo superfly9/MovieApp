@@ -27,14 +27,20 @@ favoriteRouter.post('/favorited',(req,res)=>{
 favoriteRouter.post('/removeFromFavorite',(req,res)=>{
     const {body : {movieId,userFrom}} = req;
     Favorite.findOneAndDelete({movieId,userFrom})
-        .exec((err,leftFavoriteInfo)=>{
-            if (err) return res.json({success:false});
+        .exec((err,removedItem)=>{
+            console.log('removed from Favorite:',removedItem);
+            if (err) return res.json({err,success:false});
             res.json({success:true});
         })
 })
 
-favoriteRouter.post('/addToFavorite',(req,res)=>{
-
+favoriteRouter.post('/addToFavorite',async (req,res)=>{
+    console.log(req.body)
+    const newFavorite = await new Favorite(req.body);
+    newFavorite.save((err,favorite)=>{
+        if (err) return res.json({err,success:false});
+        res.json({success:true})
+    })
 })
 
 module.exports  = favoriteRouter;
