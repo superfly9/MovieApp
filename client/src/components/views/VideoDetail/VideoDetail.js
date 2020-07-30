@@ -10,7 +10,8 @@ import './VideoDetail.css';
 function VideoDetail(props) {
     const {match : {params : {movieId}}} = props;
     const [MovieDetailInfo,setMovieDetailInfo] = useState({});
-    const [CrewInfo,setCrewInfo] = useState([])
+    const [CrewInfo,setCrewInfo] = useState([]);
+    const [ToggleActor,setToggleActor] = useState(false);
     console.log('movieId:',movieId)
     useEffect(()=>{
         let detailInfoEndpoint = `${API_URL}${movieId}?api_key=${API_KEY}&language=ko`;
@@ -27,6 +28,7 @@ function VideoDetail(props) {
                 setCrewInfo([...response.data.cast.splice(0,6)])
             })
     },[]);
+    const actorToggleHandler =()=>setToggleActor(!ToggleActor);
     return (
         <div style={{width:'85%',margin:'1rem auto'}}>
             {MovieDetailInfo &&<MainImage 
@@ -41,17 +43,18 @@ function VideoDetail(props) {
                 {/* Movie Info */}
                 <MovieInfo movie={MovieDetailInfo} />    
                 {/* Actor List */}
-                <Row lg={6} md={8} xs={24} gutter={[16,16]}>
-                    {CrewInfo && CrewInfo.map((crewInfo,index)=>(
-                        <GridCard 
-                            image={`${IMAGE_BASE_URL}w500/${crewInfo.profile_path}`}
-                        />
-                    ))}
-                </Row>
-
+                {ToggleActor &&
+                    <Row lg={6} md={8} xs={24} gutter={[16,16]}>
+                        {CrewInfo && CrewInfo.map((crewInfo,index)=>(
+                            <GridCard 
+                                image={`${IMAGE_BASE_URL}w500/${crewInfo.profile_path}`}
+                            />
+                        ))}
+                    </Row>
+                }
                 <br />
                 <div style={{display:'flex',justifyContent:'center',margin:'2rem'}}>
-                    <button>Toggle Actor</button>
+                    <button onClick={actorToggleHandler}>Toggle Actor</button>
                 </div>
             </div>
         </div>
