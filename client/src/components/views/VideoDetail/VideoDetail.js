@@ -6,6 +6,7 @@ import {Row} from 'antd';
 import GridCard from '../Util/GridCard';
 import MovieInfo from './Sections/MovieInfo';
 import './VideoDetail.css';
+import Favorite from './Sections/Favorite';
 
 function VideoDetail(props) {
     const {match : {params : {movieId}}} = props;
@@ -24,13 +25,14 @@ function VideoDetail(props) {
         
         Axios.get(crewInfoEndPoint)
             .then(response=>{
-                //20개만 담자
+                //20개만 담자,profile_path없는 배우들 다른 이미지 넣어주기
                 setCrewInfo([...response.data.cast.splice(0,6)])
             })
     },[]);
     const actorToggleHandler =()=>setToggleActor(!ToggleActor);
     return (
         <div style={{width:'85%',margin:'1rem auto'}}>
+
             {MovieDetailInfo &&<MainImage 
                 image={`${IMAGE_BASE_URL}w1280${MovieDetailInfo.poster_path}`} 
                 release_date={MovieDetailInfo.release_date}
@@ -41,7 +43,11 @@ function VideoDetail(props) {
             />}
             <div>
                 {/* Movie Info */}
+            
+                <Favorite movieId={movieId} movieInfo={MovieDetailInfo}/>
+                {/* movieTitle,posterPath를 Favorite에 왜 줘야 하는지 생각해봐야 */}
                 <MovieInfo movie={MovieDetailInfo} />    
+    
                 {/* Actor List */}
                 {ToggleActor &&
                     <Row lg={6} md={8} xs={24} gutter={[16,16]}>

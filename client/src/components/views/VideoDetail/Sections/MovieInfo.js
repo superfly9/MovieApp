@@ -5,6 +5,7 @@ function MovieInfo(props) {
     const {movie} = props;
     return (
         <div className='info_container'>
+        
         <Descriptions title="Movie Info" bordered>
             <Descriptions.Item label="Title">{movie.original_title}</Descriptions.Item>
             <Descriptions.Item label="release_date">{movie.release_date}</Descriptions.Item>
