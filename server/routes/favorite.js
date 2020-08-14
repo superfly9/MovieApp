@@ -35,7 +35,6 @@ favoriteRouter.post('/removeFromFavorite',(req,res)=>{
 })
 
 favoriteRouter.post('/addToFavorite',async (req,res)=>{
-    console.log('add To:',req.body)
     const newFavorite = await new Favorite(req.body);
     newFavorite.save((err,favorite)=>{
         console.log('Added Favor:',favorite)

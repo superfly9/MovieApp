@@ -5,10 +5,10 @@ import {
     AUTH_USER,
     LOGOUT_USER,
 } from './types';
-import { USER_SERVER } from '../components/url';
+import { Server_URL } from '../components/url';
 
 export function registerUser(dataToSubmit){
-    const request = axios.post(`${USER_SERVER}/register`,dataToSubmit)
+    const request = axios.post(`${Server_URL}/users/register`,dataToSubmit)
         .then(response => response.data);
     
     return {
@@ -18,7 +18,7 @@ export function registerUser(dataToSubmit){
 }
 
 export function loginUser(dataToSubmit){
-    const request = axios.post(`${USER_SERVER}/login`,dataToSubmit)
+    const request = axios.post(`${Server_URL}/users/login`,dataToSubmit)
                 .then(response => response.data);
 
     return {
@@ -28,7 +28,7 @@ export function loginUser(dataToSubmit){
 }
 
 export function auth(){
-    const request = axios.get(`${USER_SERVER}/auth`)
+    const request = axios.get(`${Server_URL}/users/auth`)
     .then(response => response.data);
 
     return {
@@ -38,7 +38,7 @@ export function auth(){
 }
 
 export function logoutUser(){
-    const request = axios.get(`${USER_SERVER}/logout`)
+    const request = axios.get(`${Server_URL}/users/logout`)
     .then(response => response.data);
 
     return {

@@ -50,6 +50,9 @@ function LandingPage() {
                             landingPage={true} 
                             key={index} 
                             id={movieItem.id}
+                            release_date={movieItem.release_date}
+                            vote_average={movieItem.vote_average}
+                            vote_count = {movieItem.vote_count}
                             image={movieItem.poster_path ?
                                 `${IMAGE_BASE_URL}w500${movieItem.poster_path}` :null}
                             title={movieItem.original_title}

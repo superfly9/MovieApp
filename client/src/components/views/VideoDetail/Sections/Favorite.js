@@ -1,19 +1,20 @@
 import React, { useEffect,useState } from 'react'
 import Axios from 'axios'
+import { Server_URL } from '../../../url';
 
 function Favorite(props) {
-    console.log('props.movieInfo:',props.movieInfo)
+    const { movieId, movieInfo:{ original_title:movieTitle, runtime : movieRunTime}} = props;
     const userId =localStorage.getItem('userId');
     const [Favorited,setFavorited] = useState(false);
     const [FavoriteNumber,setFavoriteNumber] = useState(0);
     const body = {
-        movieId : props.movieId,
-        movieTitle : props.movieInfo.original_title,
-        movieRunTime :props.movieInfo.runtime,
+        movieId ,
+        movieTitle ,
+        movieRunTime,
         userFrom: userId
     }
     useEffect(()=>{
-        Axios.post('/api/favorite/favoriteNumber',body)
+        Axios.post(`${Server_URL}/favorite/favoriteNumber`,body)
             .then(response=>{
                 if (response.data.success) {
                     setFavoriteNumber(response.data.favoriteNumber);
@@ -22,7 +23,7 @@ function Favorite(props) {
                 }
             })
 
-        Axios.post('/api/favorite/favorited',body)
+        Axios.post(`${Server_URL}/favorite/favorited`,body)
             .then(response=>{
                 if (response.data.success) {
                     setFavorited(response.data.favorited);
@@ -33,9 +34,8 @@ function Favorite(props) {
     },[])
 
     const handleFavorite=()=>{
-        console.log('Favorited:',Favorited)
         if (Favorited) {
-            Axios.post('/api/favorite/removeFromFavorite',body)
+            Axios.post(`${Server_URL}/favorite/removeFromFavorite`,body)
                 .then(response=>{
                     if (response.data.success) {
                         setFavoriteNumber(FavoriteNumber-1);
@@ -45,7 +45,7 @@ function Favorite(props) {
                     }
                 })
         } else {
-            Axios.post('/api/favorite/addToFavorite',body)
+            Axios.post(`${Server_URL}/favorite/addToFavorite`,body)
             .then(response=>{
                 if (response.data.success) {
                     setFavoriteNumber(FavoriteNumber+1);

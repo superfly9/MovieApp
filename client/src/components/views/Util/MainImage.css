@@ -1,0 +1,36 @@
+.mainImage_container {
+    display:flex;
+    margin:2rem 0;
+}
+.mainImage_poster img {
+    width:41vw;
+    height:55vh;
+    border-radius:10px
+}
+.mainImage_movie {
+    max-width:700px;
+    margin-left:2rem;
+}
+.mainImage_movie h3 {
+    margin: 1rem 0;
+    font-weight: 600;
+}
+.mainImage_movie p {
+    font-weight: 500;
+    font-size: 1rem;
+}
+.mainImage_detail_info {
+    display:flex;
+    flex-direction: column;
+}
+.mainImage_detail_info h2 {
+    color:black;
+    margin-right:1rem;
+}
+.mainImage_rating_info {
+ font-size:1rem;
+ font-weight:500;
+}
+.mainImage_rating_info span:first-child {
+    margin-right: 1rem;
+}
