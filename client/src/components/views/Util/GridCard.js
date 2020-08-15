@@ -21,7 +21,7 @@ function GridCard(props) {
     } else {
         return (
             <Col lg={6} md={8} xs={24}>
-                <div className='grid_container'>
+                <div className='grid_actor_container'>
                     <img className='grid_img' src={props.image} alt={props.title}></img>
                 </div>
             </Col>

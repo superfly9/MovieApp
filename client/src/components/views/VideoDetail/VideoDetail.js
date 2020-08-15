@@ -13,7 +13,7 @@ function VideoDetail(props) {
     const [MovieDetailInfo,setMovieDetailInfo] = useState({});
     const [CrewInfo,setCrewInfo] = useState([]);
     const [ToggleActor,setToggleActor] = useState(false);
-    console.log('movieId:',movieId)
+
     useEffect(()=>{
         let detailInfoEndpoint = `${API_URL}${movieId}?api_key=${API_KEY}&language=ko`;
         let crewInfoEndPoint = `${API_URL}${movieId}/credits?api_key=${API_KEY}`;
@@ -26,14 +26,14 @@ function VideoDetail(props) {
         Axios.get(crewInfoEndPoint)
             .then(response=>{
                 //20개만 담자,profile_path없는 배우들 다른 이미지 넣어주기
-                setCrewInfo([...response.data.cast.splice(0,6)])
+                setCrewInfo([...response.data.cast.splice(0,12)])
             })
     },[]);
     const actorToggleHandler =()=>setToggleActor(!ToggleActor);
     return (
         <div style={{width:'85%',margin:'1rem auto'}}>
 
-            {MovieDetailInfo &&<MainImage 
+            {MovieDetailInfo.poster_path&&<MainImage 
                 image={`${IMAGE_BASE_URL}w1280${MovieDetailInfo.poster_path}`} 
                 release_date={MovieDetailInfo.release_date}
                 vote_average={MovieDetailInfo.vote_average}

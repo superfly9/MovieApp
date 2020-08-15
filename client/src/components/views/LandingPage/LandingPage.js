@@ -3,7 +3,9 @@ import MainImage from '../Util/MainImage'
 import GridCard from '../Util/GridCard'
 import Axios from 'axios';
 import {Row} from 'antd';
+import './LandingPage.css';
 import { API_URL, API_KEY, IMAGE_BASE_URL } from '../../Config';
+import SearchInput from './Sections/SearchInput';
 
 function LandingPage() {
     const [Movies,setMovies] = useState([]);
@@ -32,16 +34,9 @@ function LandingPage() {
         getItems(endPoint);
     }
     return (
-        <div style={{width:'85%',margin:'1rem auto'}}>
-            {MainMovie &&<MainImage 
-                image={`${IMAGE_BASE_URL}w1280${MainMovie.backdrop_path}`} 
-                release_date={MainMovie.release_date}
-                vote_average={MainMovie.vote_average}
-                vote_count = {MainMovie.vote_count}
-                title={MainMovie.original_title} 
-                description={MainMovie.overview}
-            />}
-                <h2>Movies by latest</h2>
+        <div className='landingPage_container' style={{width:'85%',margin:'1rem auto'}}>
+                <SearchInput />
+                <h2>최신 영화</h2>
                 <hr />
 
                 <Row gutter={[16,16]}>
