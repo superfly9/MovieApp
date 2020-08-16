@@ -1,3 +1,11 @@
 .info_container {
     margin:1rem 0;
 }
+.ant-descriptions-bordered {
+    border:none;
+}
+.ant-descriptions-row,
+.ant-descriptions-item-content,
+.ant-descriptions-item-label {
+    border:none;
+}

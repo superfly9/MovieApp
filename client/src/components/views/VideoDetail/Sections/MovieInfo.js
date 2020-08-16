@@ -1,22 +1,42 @@
 import React from 'react'
 import { Descriptions } from 'antd';
+import '../VideoDetail.css';
 
 function MovieInfo(props) {
-    const {movie} = props;
+    const {movie :{ 
+        title,
+        release_date,
+        revenue,
+        runtime,
+        vote_count,
+        status,
+        popularity,
+        tagline
+    }} = props;
+
+    let changeDollartoWon;
+    if (revenue) {
+        let arr = `${revenue*1200}`.split('');
+        changeDollartoWon = arr.map((target,index)=>{
+            if (index%3===2) arr[index] =`,${arr[index]}`  
+            return arr[index];
+        }).join('');
+    }
+    
     return (
         <div className='info_container'>
         
-            <Descriptions title="Movie Info" bordered>
-                <Descriptions.Item label="Title">{movie.original_title}</Descriptions.Item>
-                <Descriptions.Item label="release_date">{movie.release_date}</Descriptions.Item>
-                <Descriptions.Item label="revenue">{movie.revenue}</Descriptions.Item>
+            <Descriptions title="영화 정보" bordered>
+                <Descriptions.Item label="제목">{title}</Descriptions.Item>
+                <Descriptions.Item label="개봉 날짜">{release_date}</Descriptions.Item>
+                <Descriptions.Item label="수익">{changeDollartoWon}원</Descriptions.Item>
 
-                <Descriptions.Item label="runtime">{movie.runtime}</Descriptions.Item>
-                <Descriptions.Item label="runtime">{movie.runtime}</Descriptions.Item>
-                <Descriptions.Item label="vote_count">{movie.vote_count}</Descriptions.Item>
+                <Descriptions.Item label="상영시간">{runtime}분</Descriptions.Item>
+                <Descriptions.Item label="좋아요 수">{vote_count}표</Descriptions.Item>
                 
-                <Descriptions.Item label="status">{movie.status}</Descriptions.Item>
-                <Descriptions.Item label="popularity">{movie.popularity}</Descriptions.Item>
+                <Descriptions.Item label="개봉 여부">{status==='Released' ? '개봉완료':'개봉 예정작'}</Descriptions.Item>
+                <Descriptions.Item label="인기도">{popularity}</Descriptions.Item>
+                <Descriptions.Item label="요약">{tagline}</Descriptions.Item>
             </Descriptions>
         </div>
     )

@@ -25,11 +25,11 @@ function GridCard(props) {
                     <p>Searched Result</p>
                     <ul className='search_length_bar'>
                         <li>
-                            <span>Movie</span>
+                            <span>Movie: </span>
                             <a>{resultLength}</a>
                         </li>
                         <li>
-                            <span>TV Shows</span>
+                            <span>TV Shows: </span>
                             <a>{0}</a>
                         </li>
                 

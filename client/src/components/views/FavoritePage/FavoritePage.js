@@ -16,16 +16,16 @@ function FavoritePage() {
             })
     },[]);
     return (
-        <div style={{width:'85%',margin:'3rem auto'}}>
-            <h2>Favorite Movie</h2>
+        <div className='favorite_container'>
+            <h2>내가 좋아하는 영화 </h2>
             <hr />
 
             <table>
                 <thead>
                     <tr>
-                        <td>Movie Title</td>
-                        <td>Movie RunTime</td>
-                        <td>Remove from favorites</td>
+                        <td>제목</td>
+                        <td>재생 시간</td>
+                        <td>삭제하기</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,7 +33,7 @@ function FavoritePage() {
                         <tr key={index}>
                             <td>{movieItem.movieTitle}</td>
                             <td>{movieItem.movieRunTime}</td>
-                            <td><button>Remove</button></td>
+                            <td><button className='remove_btn'>Remove</button></td>
                         </tr>
                     ))}
                 </tbody>

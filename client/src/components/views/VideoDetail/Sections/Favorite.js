@@ -1,6 +1,5 @@
 import React, { useEffect,useState } from 'react'
 import Axios from 'axios'
-import { Server_URL } from '../../../url';
 
 function Favorite(props) {
     const { movieId, movieInfo:{ original_title:movieTitle, runtime : movieRunTime}} = props;
@@ -14,7 +13,7 @@ function Favorite(props) {
         userFrom: userId
     }
     useEffect(()=>{
-        Axios.post(`${Server_URL}/favorite/favoriteNumber`,body)
+        Axios.post(`/favorite/favoriteNumber`,body)
             .then(response=>{
                 if (response.data.success) {
                     setFavoriteNumber(response.data.favoriteNumber);
@@ -23,7 +22,7 @@ function Favorite(props) {
                 }
             })
 
-        Axios.post(`${Server_URL}/favorite/favorited`,body)
+        Axios.post(`/favorite/favorited`,body)
             .then(response=>{
                 if (response.data.success) {
                     setFavorited(response.data.favorited);
@@ -35,7 +34,7 @@ function Favorite(props) {
 
     const handleFavorite=()=>{
         if (Favorited) {
-            Axios.post(`${Server_URL}/favorite/removeFromFavorite`,body)
+            Axios.post(`/favorite/removeFromFavorite`,body)
                 .then(response=>{
                     if (response.data.success) {
                         setFavoriteNumber(FavoriteNumber-1);
@@ -45,7 +44,7 @@ function Favorite(props) {
                     }
                 })
         } else {
-            Axios.post(`${Server_URL}/favorite/addToFavorite`,body)
+            Axios.post(`/favorite/addToFavorite`,body)
             .then(response=>{
                 if (response.data.success) {
                     setFavoriteNumber(FavoriteNumber+1);
