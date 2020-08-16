@@ -1,0 +1,63 @@
+.search_movie_container .grid_container {
+    margin:.7rem;
+    display: flex;
+    height: 200px;
+}
+.search_movie_container .grid_container a {
+    width: 20%;
+}
+.search_movie_container .grid_container img {
+    height: 100%;
+}
+.search_movie_container .movie_info {
+    width: 70%;
+    padding:1rem;
+}
+.search_movie_container .movie_info span {
+    margin:.5rem;
+    display: flex;
+}
+.search_movie_container .movie_info_title {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.search_movie_container .movie_info_overview {
+    font-size: 1rem;
+    font-weight: 500;
+}
+.search_movie_container .movie_info_release_date {
+    display: flex;
+}
+.search_movie_container p {
+    margin:.7rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color:white;
+    padding:1rem;
+    border-radius: 5px;
+    background-color:rgba(52, 220, 235);
+}
+.search_length_bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    list-style: none;
+    font-size: 1rem;
+    font-weight: 600;
+    padding-left: 0;
+}
+.search_length_bar li {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex: auto;
+}
+.search_length_bar span,
+.search_length_bar a {
+    margin:.7rem;
+}
+.search_length_bar a {
+    padding:.3rem;
+    border-radius: 5px;
+    background-color: whitesmoke;
+}
