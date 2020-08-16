@@ -7,8 +7,8 @@ function SearchedPage(props) {
 
     return (
         <div>
+            SearchEd
         </div>
     )
 }
-
 export default SearchedPage

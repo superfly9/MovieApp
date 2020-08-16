@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react';
 import { Route, Switch } from "react-router-dom";
 import Auth from "../hoc/auth";
-// pages for this product
 import LandingPage from "./views/LandingPage/LandingPage.js";
 import LoginPage from "./views/LoginPage/LoginPage.js";
 import RegisterPage from "./views/RegisterPage/RegisterPage.js";
@@ -25,7 +24,7 @@ function App() {
           <Route exact path='/login' component={Auth(LoginPage, false)} />
           <Route exact path='/register' component={Auth(RegisterPage, false)} />
           <Route exact path='/movie/:movieId' component={Auth(VideoDetail,null)} />
-          <Route exact path='/search/result' component={Auth(SearchedPage,null)} />
+          <Route exact path='/search/movie' component={Auth(SearchedPage,null)} />
           <Route exact path='/favorite' component={Auth(FavoritePage,true)} />
         </Switch>
       </div>

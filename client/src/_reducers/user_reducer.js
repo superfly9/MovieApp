@@ -17,6 +17,7 @@ export default function(state={},action){
         case LOGOUT_USER:
             return {...state }
         default:
-            return state;
-    }
+                return state;
+        }
+    console.log('State:',state,'Actin:',action)
 }

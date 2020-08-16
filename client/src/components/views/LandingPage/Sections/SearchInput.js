@@ -1,12 +1,13 @@
 import React,{useState} from 'react';
+import {useDispatch} from 'react-redux';
 import './SearchInput.css';
 import Axios from 'axios';
-import { Input } from 'antd';
 import {SEARCH_URL, API_KEY } from '../../../Config';
-const { Search } = Input;
+import { searchMovie } from '../../../../_actions/movie_actions';
 
 
 function SearchInput() {
+    const dispatch = useDispatch();
     const [searchValue,setSearchValue] = useState('');
     const [searchList,setSearchList] =useState([]);
     const handleInputChange = (event) =>{
@@ -18,21 +19,20 @@ function SearchInput() {
         setSearchValue('');
         Axios.get(`${SEARCH_URL}?api_key=${API_KEY}&language={en-KO}&query=${searchValue}&page=1&include_adult=false`)
             .then(response=>{
-                const {data : {results}} = response;
-                console.log('Result:',results) //Array;
-                window.location.assign('/search/result')        
+                const {data : {results:movieResult}} = response;
+                dispatch(searchMovie(movieResult))
+                window.location.assign('/search/movie')        
             })
     }
     return (
         <div>
             <form className='searchForm' onSubmit={handleSearchSubmit}>
-                <Search placeholder="영화 검색을 해보세요" 
+                <input 
+                    placeholder="영화 검색을 해보세요" 
                     value={searchValue} 
                     onChange={handleInputChange}
-                    onSearch={value => console.log(value)} 
-                    enterButton={'검색'}
-                    size='large'
                 />
+                <button>Search</button>
             </form>
         </div>
     )

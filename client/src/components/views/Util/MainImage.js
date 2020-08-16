@@ -1,5 +1,6 @@
 import React from 'react'
 import './MainImage.css';
+
 function MainImage(props) {
     const {release_date,vote_count,vote_average,title,description,image} = props;
     const releaseYear =release_date.split('-')[0];

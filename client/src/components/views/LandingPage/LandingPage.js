@@ -1,5 +1,4 @@
 import React,{useEffect,useState} from 'react'
-import MainImage from '../Util/MainImage'
 import GridCard from '../Util/GridCard'
 import Axios from 'axios';
 import {Row} from 'antd';

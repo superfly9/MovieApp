@@ -3,13 +3,12 @@ import { Menu } from 'antd';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import { useSelector } from "react-redux";
-import { Server_URL } from '../../../url';
 
 function RightMenu(props) {
   const user = useSelector(state => state.user)
 
   const logoutHandler = () => {
-    axios.get(`${Server_URL}/users/logout`).then(response => {
+    axios.get(`/users/logout`).then(response => {
       if (response.status === 200) {
         props.history.push("/login");
       } else {

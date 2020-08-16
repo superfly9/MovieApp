@@ -1,12 +1,11 @@
 import React, { useEffect,useState } from 'react'
 import Axios from 'axios';
 import './Favorite.css';
-import { Server_URL } from '../../url';
 
 function FavoritePage() {
     const [Favorited,setFavorited] = useState([]);
     useEffect(()=>{
-        Axios.post(`${Server_URL}/favorite/getFavoredMovie`,{userFrom : localStorage.getItem('userId')})
+        Axios.post(`/favorite/getFavoredMovie`,{userFrom : localStorage.getItem('userId')})
             .then(response=>{
                 if (response.data.success) {
                     console.log(response.data.favorites)

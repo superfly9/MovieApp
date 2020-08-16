@@ -1,14 +1,13 @@
-import axios from 'axios';
+import Axios from 'axios';
 import {
     LOGIN_USER,
     REGISTER_USER,
     AUTH_USER,
     LOGOUT_USER,
 } from './types';
-import { Server_URL } from '../components/url';
 
 export function registerUser(dataToSubmit){
-    const request = axios.post(`${Server_URL}/users/register`,dataToSubmit)
+    const request = Axios.post(`/users/register`,dataToSubmit)
         .then(response => response.data);
     
     return {
@@ -18,7 +17,7 @@ export function registerUser(dataToSubmit){
 }
 
 export function loginUser(dataToSubmit){
-    const request = axios.post(`${Server_URL}/users/login`,dataToSubmit,{withCredentials:true})
+    const request = Axios.post(`/users/login`,dataToSubmit,{withCredentials:true})
                 .then(response => response.data);
 
     return {
@@ -28,7 +27,7 @@ export function loginUser(dataToSubmit){
 }
 
 export function auth(){
-    const request = axios.get(`${Server_URL}/users/auth`)
+    const request = Axios.get(`/users/auth`)
     .then(response => response.data);
 
     return {
@@ -38,7 +37,7 @@ export function auth(){
 }
 
 export function logoutUser(){
-    const request = axios.get(`${Server_URL}/users/logout`)
+    const request = Axios.get(`/users/logout`)
     .then(response => response.data);
 
     return {
