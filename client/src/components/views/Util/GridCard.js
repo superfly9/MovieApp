@@ -3,7 +3,7 @@ import { Col } from 'antd'
 import './GridCard.css';
 
 function GridCard(props) {
-    const {navbar,filterdMovie,image,title,release_date,id,overview} = props;
+    const {name,character,navbar,filterdMovie,image,title,release_date,id,overview} = props;
     if (props.landingPage) {
         return (
             <Col lg={6} md={8} xs={24}>
@@ -45,6 +45,9 @@ function GridCard(props) {
             <Col lg={6} md={8} xs={24}>
                 <div className='grid_actor_container'>
                     <img className='grid_img' src={props.image} alt={props.title}></img>
+                    <div className='actor_info'>
+                            <span>{character}({name})</span>
+                    </div>
                 </div>
             </Col>
         )

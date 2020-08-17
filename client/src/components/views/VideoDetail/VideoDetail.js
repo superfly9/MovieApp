@@ -25,7 +25,6 @@ function VideoDetail(props) {
         
         Axios.get(crewInfoEndPoint)
             .then(response=>{
-                //20개만 담자,profile_path없는 배우들 다른 이미지 넣어주기
                 setCrewInfo([...response.data.cast.splice(0,12)])
             })
     },[]);
@@ -43,19 +42,18 @@ function VideoDetail(props) {
                 description={MovieDetailInfo.overview}
             />}
             <div>
-                {/* Movie Info */}
             
                 <Favorite movieId={movieId} movieInfo={MovieDetailInfo}/>
-                {/* movieTitle,posterPath를 Favorite에 왜 줘야 하는지 생각해봐야 */}
                 <MovieInfo movie={MovieDetailInfo} />    
     
-                {/* Actor List */}
                 {ToggleActor &&
                     <Row lg={6} md={8} xs={24} gutter={[16,16]}>
                         {CrewInfo && CrewInfo.map((crewInfo,index)=>(
                             <GridCard 
                                 key={index}
-                                image={`${IMAGE_BASE_URL}w500/${crewInfo.profile_path}`}
+                                name={crewInfo.name}
+                                character={crewInfo.character}
+                                image={crewInfo.profile_path?`${IMAGE_BASE_URL}w500/${crewInfo.profile_path}`:`/uploads/img/profile.png` }
                             />
                         ))}
                     </Row>

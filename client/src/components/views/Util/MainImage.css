@@ -2,8 +2,13 @@
     display:flex;
     margin:2rem 0;
 }
+.opacity_container {
+    display: flex;
+    border-radius: 20px;
+    padding:1.5rem;
+}
 .mainImage_poster img {
-    width:41vw;
+    width:25vw;
     height:65vh;
     border-radius:10px
 }
