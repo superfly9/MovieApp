@@ -18,22 +18,3 @@
     border:1.5px solid rgba(0, 0, 0, .5);
     border-radius: 5px;
 }
-
-.searchPage {
-    margin:.7rem;
-}
-.searchPage input {
-    font-weight: 600;
-}
-.searchPage button {
-    font-weight: 500;
-}
-.searchForm {
-    padding-right: 1rem;
-}
-.search_title {
-    text-align: center;
-    margin: .7rem;
-    font-size: 1.5rem;
-    font-weight: 700;
-}

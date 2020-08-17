@@ -2,3 +2,10 @@
     font-weight: bold;
     font-size:1.3rem;
 }
+.load_more_btn {
+    font-weight: 500;
+    font-size:1rem;
+    padding:.8rem 1.2rem;
+    border-radius: 10px;
+    border:none;
+}

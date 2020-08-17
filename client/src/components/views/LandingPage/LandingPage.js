@@ -4,7 +4,7 @@ import Axios from 'axios';
 import {Row} from 'antd';
 import './LandingPage.css';
 import { API_URL, API_KEY, IMAGE_BASE_URL } from '../../Config';
-import SearchInput from './Sections/SearchInput';
+import SearchInput from '../Util/SearchInput';
 
 function LandingPage() {
     const [Movies,setMovies] = useState([]);
@@ -48,7 +48,7 @@ function LandingPage() {
                             vote_average={movieItem.vote_average}
                             vote_count = {movieItem.vote_count}
                             image={movieItem.poster_path ?
-                                `${IMAGE_BASE_URL}w500${movieItem.poster_path}` :null}
+                                `${IMAGE_BASE_URL}w500${movieItem.poster_path}` :'/uploads/img/noImage.png'}
                             title={movieItem.title}
                             description={movieItem.overview}
                         />
@@ -56,7 +56,7 @@ function LandingPage() {
                 </Row>
                 
                 <div style={{margin:'2rem',textAlign:'center'}}>
-                    <button onClick={loadMoreItems}>Load More</button>
+                    <button className='load_more_btn' onClick={loadMoreItems}>Load More</button>
                 </div>
         </div>
     )

@@ -53,14 +53,14 @@ function VideoDetail(props) {
                                 key={index}
                                 name={crewInfo.name}
                                 character={crewInfo.character}
-                                image={crewInfo.profile_path?`${IMAGE_BASE_URL}w500/${crewInfo.profile_path}`:`/uploads/img/profile.png` }
+                                image={crewInfo.profile_path?`${IMAGE_BASE_URL}w500/${crewInfo.profile_path}`:`/uploads/img/noImage.png` }
                             />
                         ))}
                     </Row>
                 }
                 <br />
-                <div style={{display:'flex',justifyContent:'center',margin:'2rem'}}>
-                    <button onClick={actorToggleHandler}>Toggle Actor</button>
+                <div className='toggle_container'>
+                    <button className='toggle_btn' onClick={actorToggleHandler}>출연배우 목록</button>
                 </div>
             </div>
         </div>

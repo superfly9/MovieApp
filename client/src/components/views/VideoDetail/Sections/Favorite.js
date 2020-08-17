@@ -1,5 +1,6 @@
 import React, { useEffect,useState } from 'react'
 import Axios from 'axios'
+import './Favorite.css';
 
 function Favorite(props) {
     const { movieId, movieInfo:{ title:movieTitle, runtime : movieRunTime}} = props;
@@ -56,8 +57,10 @@ function Favorite(props) {
         }
     }
     return (
-        <div style={{display:'flex',justifyContent:'flex-end'}}>
-            <button onClick={handleFavorite} style={{padding:'0.2rem .5rem'}}>{Favorited ? 'Not Favorite' : 'Add to Favorite'} {FavoriteNumber}</button>
+        <div className='favorite_btn_container'>
+            <button className='favorite_btn' 
+            onClick={handleFavorite}
+            >{Favorited ? 'Not Favorite' : 'Add to Favorite'} : {FavoriteNumber}</button>
         </div>
     )
 }

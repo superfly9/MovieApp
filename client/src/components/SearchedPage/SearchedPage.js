@@ -3,6 +3,7 @@ import {useSelector} from 'react-redux';
 import GridCard from '../views/Util/GridCard';
 import { IMAGE_BASE_URL } from '../Config';
 import './SearchedPage.css';
+import SearchInput from '../views/LandingPage/Sections/SearchInput';
 
 function SearchedPage(props) {
     const movie = useSelector(state=>state.movie);
@@ -68,6 +69,7 @@ function SearchedPage(props) {
 
     return (
         <div className='search_movie_container'>
+            <SearchInput searchPage />
             {renderMovie}
         </div>
     )

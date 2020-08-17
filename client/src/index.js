@@ -9,7 +9,7 @@ import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from "react-router-dom";
 import { PersistGate } from 'redux-persist/integration/react';
-import { store,persistor } from './store/index';
+import { store,persistor } from './_store/index';
 import {Provider} from 'react-redux';
 
 ReactDOM.render(

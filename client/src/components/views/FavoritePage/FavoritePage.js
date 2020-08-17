@@ -21,8 +21,7 @@ function FavoritePage() {
             .then(response=>{
                 if (response.data.success) {
                     const {data:{result}} =response;
-                    setFavorited([...result]);
-                    
+                    setFavorited([...result]);      
                 } else {
                     alert('영화 삭제에 실패했습니다.')
                 }

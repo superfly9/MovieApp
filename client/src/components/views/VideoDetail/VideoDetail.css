@@ -9,3 +9,15 @@
 .ant-descriptions-item-label {
     border:none;
 }
+.toggle_container {
+    display:flex;
+    justify-content:center;
+    margin:2rem
+}
+.toggle_btn {
+    padding:1rem;
+    font-size:1rem;
+    font-weight: 400;
+    border-radius: 10px;
+    border:none;
+}
