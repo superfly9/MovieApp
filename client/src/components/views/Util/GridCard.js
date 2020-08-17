@@ -3,7 +3,8 @@ import { Col } from 'antd'
 import './GridCard.css';
 
 function GridCard(props) {
-    const {image,title,release_date,vote_average,id,overview,resultLength} = props;
+    const {image,title,release_date,id,overview,resultLength} = props;
+    console.log(props)
     if (props.landingPage) {
         return (
             <Col lg={6} md={8} xs={24}>
@@ -22,21 +23,21 @@ function GridCard(props) {
         return (
             <Fragment>
                 <Col lg={6} md={6} xs={6}>
-                    <p>Searched Result</p>
+                    <p className='search_result_bar'>Search Result</p>
                     <ul className='search_length_bar'>
                         <li>
-                            <span>Movie: </span>
+                            <span>Movie </span>
                             <a>{resultLength}</a>
                         </li>
                         <li>
-                            <span>TV Shows: </span>
+                            <span>TV Shows </span>
                             <a>{0}</a>
                         </li>
                 
                         <li>
-                            <span>Keywords: </span>
+                            <span>Keywords </span>
                             <a>{title}</a>
-                            <a>{release_date}</a>
+                            {/* <a>{release_date}</a> */}
                         </li>
                     </ul>
                 </Col>
@@ -48,7 +49,7 @@ function GridCard(props) {
                         <div className='movie_info'>
                             <span className='movie_info_title'>{title}</span>
                             <span className='movie_info_release_date'>{release_date}</span>
-                            <span className='movie_info_overview'>{overview}</span>
+                            <p className='movie_info_overview'>{overview}</p>
                         </div>
                     </div>
                 </Col>

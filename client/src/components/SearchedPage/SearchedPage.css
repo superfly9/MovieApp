@@ -1,10 +1,9 @@
 .search_movie_container .grid_container {
     margin:.7rem;
     display: flex;
-    height: 200px;
 }
 .search_movie_container .grid_container a {
-    width: 20%;
+    width: 25%;
 }
 .search_movie_container .grid_container img {
     height: 100%;
@@ -16,6 +15,7 @@
 .search_movie_container .movie_info span {
     margin:.5rem;
     display: flex;
+    justify-content: flex-start;
 }
 .search_movie_container .movie_info_title {
     font-size: 1.5rem;
@@ -24,11 +24,13 @@
 .search_movie_container .movie_info_overview {
     font-size: 1rem;
     font-weight: 500;
+    height: 50%;
+    text-overflow: ellipsis;
 }
 .search_movie_container .movie_info_release_date {
     display: flex;
 }
-.search_movie_container p {
+.search_result_bar {
     margin:.7rem;
     font-size: 1.5rem;
     font-weight: 600;
@@ -54,10 +56,13 @@
 }
 .search_length_bar span,
 .search_length_bar a {
-    margin:.7rem;
+    margin:0.7rem 1rem;
+    width: 50%;
 }
 .search_length_bar a {
+    text-align: center;
     padding:.3rem;
+    width: 35%;
     border-radius: 5px;
     background-color: whitesmoke;
 }

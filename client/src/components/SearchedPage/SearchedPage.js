@@ -8,9 +8,13 @@ function SearchedPage(props) {
     const movie = useSelector(state=>state.movie);
     const {movieResult} = movie;
     const resultLength = movieResult.length;
-    console.log('movie:',movieResult);
 
-    const renderMovie = movieResult.map((movieInfo,index)=>(
+        //popularity순으로 내림차순 정렬해야
+    const filterdMovie = movieResult.sort((a,b)=>{
+        return b.popularity - a.popularity;
+    })
+
+    const renderMovie = filterdMovie.map((movieInfo,index)=>(
         <Fragment key={index}>
             <GridCard
                 searchMovie

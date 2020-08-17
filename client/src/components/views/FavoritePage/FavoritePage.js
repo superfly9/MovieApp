@@ -15,6 +15,19 @@ function FavoritePage() {
                 }
             })
     },[]);
+    const removeFavoriteMovie = (movieId,userFrom) =>{
+        const body = {movieId,userFrom}
+        Axios.post('/favorite/deleteMovie',body)
+            .then(response=>{
+                if (response.data.success) {
+                    const {data:{result}} =response;
+                    setFavorited([...result]);
+                    
+                } else {
+                    alert('영화 삭제에 실패했습니다.')
+                }
+            })
+    }
     return (
         <div className='favorite_container'>
             <h2>내가 좋아하는 영화 </h2>
@@ -32,8 +45,8 @@ function FavoritePage() {
                     {Favorited && Favorited.map((movieItem,index)=>(
                         <tr key={index}>
                             <td>{movieItem.movieTitle}</td>
-                            <td>{movieItem.movieRunTime}</td>
-                            <td><button className='remove_btn'>Remove</button></td>
+                            <td>{movieItem.movieRunTime}분</td>
+                            <td><button className='remove_btn' onClick={()=>removeFavoriteMovie(movieItem._id,movieItem.userFrom)}>삭제</button></td>
                         </tr>
                     ))}
                 </tbody>

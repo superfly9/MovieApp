@@ -12,14 +12,14 @@ function MainImage(props) {
             <div className='mainImage_movie'>
                 <div className='mainImage_detail_info'>
                     <h2>{title} ({releaseYear})</h2>
-                    <h3>{release_date}</h3>
+                    <h3>개봉일 :{release_date}</h3>
                 </div>
                 <div className='mainImage_rating_info'>
-                    <span>Rating:{vote_average}</span>
-                    <span>Vote:{vote_count}</span>
+                    <span>평점:{vote_average}</span>
+                    <span>좋아요 수:{vote_count}</span>
                 </div>
                 <h3>개요</h3>
-                <p>{description}</p>
+                <p>{description ? description :'개요가 없습니다.'}</p>
             </div>
         </div>
     )

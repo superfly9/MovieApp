@@ -10,10 +10,6 @@ import VideoDetail from './views/VideoDetail/VideoDetail';
 import FavoritePage from './views/FavoritePage/FavoritePage';
 import SearchedPage from './SearchedPage/SearchedPage';
 
-//null   Anyone Can go inside
-//true   only logged in user can go inside
-//false  logged in user can't go inside
-
 function App() {
   return (
     <Suspense fallback={(<div>Loading...</div>)}>

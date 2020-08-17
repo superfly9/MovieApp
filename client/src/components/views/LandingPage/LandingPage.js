@@ -49,7 +49,7 @@ function LandingPage() {
                             vote_count = {movieItem.vote_count}
                             image={movieItem.poster_path ?
                                 `${IMAGE_BASE_URL}w500${movieItem.poster_path}` :null}
-                            title={movieItem.original_title}
+                            title={movieItem.title}
                             description={movieItem.overview}
                         />
                     ))}
