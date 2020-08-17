@@ -17,7 +17,7 @@ function SearchInput() {
     const handleSearchSubmit =(event)=>{
         event.preventDefault();
         setSearchValue('');
-        Axios.get(`${SEARCH_URL}?api_key=${API_KEY}&language={en-KO}&query=${searchValue}&page=1&include_adult=false`)
+        Axios.get(`${SEARCH_URL}?api_key=${API_KEY}&language=ko&query=${searchValue}&page=1&include_adult=false`)
             .then(response=>{
                 const {data : {results:movieResult}} = response;
                 dispatch(searchMovie(movieResult))

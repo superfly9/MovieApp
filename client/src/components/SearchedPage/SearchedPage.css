@@ -1,12 +1,13 @@
 .search_movie_container .grid_container {
     margin:.7rem;
     display: flex;
-}
-.search_movie_container .grid_container a {
-    width: 25%;
+    height: 200px;
 }
 .search_movie_container .grid_container img {
     height: 100%;
+}
+.search_movie_container .grid_container a {
+    width: 25%;
 }
 .search_movie_container .movie_info {
     width: 70%;
@@ -22,10 +23,16 @@
     font-weight: 600;
 }
 .search_movie_container .movie_info_overview {
+    display: flex;    
+}
+.search_movie_container .movie_info_overview_p {
     font-size: 1rem;
     font-weight: 500;
-    height: 50%;
+    overflow: hidden;
     text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* 라인수 */
+    -webkit-box-orient: vertical;
 }
 .search_movie_container .movie_info_release_date {
     display: flex;

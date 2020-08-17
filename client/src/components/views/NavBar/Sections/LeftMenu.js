@@ -7,7 +7,7 @@ function LeftMenu(props) {
   return (
     <Menu mode={props.mode}>
     <Menu.Item key="favorite">
-      <a href="/favorite">Favorite</a>
+      <a href="/favorite">나의 구독 영화</a>
     </Menu.Item>
   </Menu>
   )

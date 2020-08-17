@@ -34,6 +34,7 @@ function VideoDetail(props) {
         <div style={{width:'85%',margin:'1rem auto'}}>
 
             {MovieDetailInfo.poster_path&&<MainImage 
+                backImage={`${IMAGE_BASE_URL}w1280${MovieDetailInfo.backdrop_path}`}
                 image={`${IMAGE_BASE_URL}w1280${MovieDetailInfo.poster_path}`} 
                 release_date={MovieDetailInfo.release_date}
                 vote_average={MovieDetailInfo.vote_average}

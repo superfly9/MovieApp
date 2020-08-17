@@ -2,10 +2,11 @@ import React from 'react'
 import './MainImage.css';
 
 function MainImage(props) {
-    const {release_date,vote_count,vote_average,title,description,image} = props;
+    const {backImage,release_date,vote_count,vote_average,title,description,image} = props;
+    console.log('Back:',backImage,'Poster:',image)
     const releaseYear =release_date.split('-')[0];
     return (
-        <div className='mainImage_container'>
+        <div className='mainImage_container' style={{backgroundImage:`${backImage}`}}>
             <div className='mainImage_poster'>
                 <img src={image} alt={title} />
             </div>

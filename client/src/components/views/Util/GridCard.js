@@ -3,12 +3,11 @@ import { Col } from 'antd'
 import './GridCard.css';
 
 function GridCard(props) {
-    const {image,title,release_date,id,overview,resultLength} = props;
-    console.log(props)
+    const {navbar,filterdMovie,image,title,release_date,id,overview} = props;
     if (props.landingPage) {
         return (
             <Col lg={6} md={8} xs={24}>
-                <div className='grid_container'>
+                <div className='grid_landing_container'>
                     <a href={`/movie/${id}`}>
                         <img className='grid_img' src={image} alt={title}></img>
                     </a>
@@ -23,23 +22,7 @@ function GridCard(props) {
         return (
             <Fragment>
                 <Col lg={6} md={6} xs={6}>
-                    <p className='search_result_bar'>Search Result</p>
-                    <ul className='search_length_bar'>
-                        <li>
-                            <span>Movie </span>
-                            <a>{resultLength}</a>
-                        </li>
-                        <li>
-                            <span>TV Shows </span>
-                            <a>{0}</a>
-                        </li>
-                
-                        <li>
-                            <span>Keywords </span>
-                            <a>{title}</a>
-                            {/* <a>{release_date}</a> */}
-                        </li>
-                    </ul>
+                    {navbar && navbar(filterdMovie)}
                 </Col>
                 <Col lg={18} md={18} xs={18}>
                     <div className='grid_container'>
@@ -49,7 +32,9 @@ function GridCard(props) {
                         <div className='movie_info'>
                             <span className='movie_info_title'>{title}</span>
                             <span className='movie_info_release_date'>{release_date}</span>
-                            <p className='movie_info_overview'>{overview}</p>
+                            <div className='movie_info_overview'>
+                                <p className='movie_info_overview_p'>{overview}</p>
+                            </div>
                         </div>
                     </div>
                 </Col>
