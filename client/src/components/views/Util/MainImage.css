@@ -17,6 +17,7 @@
     margin-left:2rem;
 }
 .mainImage_movie h3 {
+    color:white;
     margin: 1rem 0;
     font-weight: 600;
 }
@@ -26,20 +27,22 @@
     text-overflow: ellipsis;
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 8; /* 라인수 */
+    -webkit-line-clamp: 8;
     -webkit-box-orient: vertical;
+    color:white;
 }
 .mainImage_detail_info {
     display:flex;
     flex-direction: column;
 }
 .mainImage_detail_info h2 {
-    color:black;
+    color:white;
     margin-right:1rem;
 }
 .mainImage_rating_info {
  font-size:1rem;
  font-weight:500;
+ color:white;
 }
 .mainImage_rating_info span:first-child {
     margin-right: 1rem;

@@ -56,7 +56,7 @@ function LandingPage() {
                 </Row>
                 
                 <div style={{margin:'2rem',textAlign:'center'}}>
-                    <button className='load_more_btn' onClick={loadMoreItems}>Load More</button>
+                    <button className='load_more_btn' onClick={loadMoreItems}>영화 더 보기</button>
                 </div>
         </div>
     )

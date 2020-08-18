@@ -13,6 +13,7 @@ function MovieInfo(props) {
         popularity,
         tagline
     }} = props;
+    console.log(popularity)
 
     let changeDollartoWon;
     if (revenue) {
@@ -25,11 +26,11 @@ function MovieInfo(props) {
     
     return (
         <div className='info_container'>
-        
+            {popularity &&
             <Descriptions title="영화 정보" bordered>
                 <Descriptions.Item label="제목">{title}</Descriptions.Item>
                 <Descriptions.Item label="개봉 날짜">{release_date}</Descriptions.Item>
-                <Descriptions.Item label="수익">{revenue ? `{changeDollartoWon}원`:'수익 기록이 없습니다.'}</Descriptions.Item>
+                <Descriptions.Item label="수익">{revenue ? `${changeDollartoWon}원`:'수익 기록이 없습니다.'}</Descriptions.Item>
 
                 <Descriptions.Item label="상영시간">{runtime}분</Descriptions.Item>
                 <Descriptions.Item label="좋아요 수">{vote_count}표</Descriptions.Item>
@@ -38,6 +39,7 @@ function MovieInfo(props) {
                 <Descriptions.Item label="인기도">{Math.floor(popularity)}</Descriptions.Item>
                 <Descriptions.Item label="요약">{tagline ? tagline : '요약 내용이 없습니다.'}</Descriptions.Item>
             </Descriptions>
+            }
         </div>
     )
 }

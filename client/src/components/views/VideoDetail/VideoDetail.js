@@ -7,19 +7,23 @@ import GridCard from '../Util/GridCard';
 import MovieInfo from './Sections/MovieInfo';
 import './VideoDetail.css';
 import Favorite from './Sections/Favorite';
+import Comment from './Sections/Comment';
+import { useSelector } from 'react-redux';
 
 function VideoDetail(props) {
     const {match : {params : {movieId}}} = props;
     const [MovieDetailInfo,setMovieDetailInfo] = useState({});
     const [CrewInfo,setCrewInfo] = useState([]);
     const [ToggleActor,setToggleActor] = useState(false);
+    const [CommentList,setCommentList] = useState([]);
+    const user = useSelector(state=>state.user);
+    const {userData : { _id:userId}} = user;
 
     useEffect(()=>{
         let detailInfoEndpoint = `${API_URL}${movieId}?api_key=${API_KEY}&language=ko`;
         let crewInfoEndPoint = `${API_URL}${movieId}/credits?api_key=${API_KEY}`;
         Axios.get(detailInfoEndpoint)
             .then(response=>{
-                console.log(response.data)
                 setMovieDetailInfo({...response.data})
             })
         
@@ -29,6 +33,15 @@ function VideoDetail(props) {
             })
     },[]);
     const actorToggleHandler =()=>setToggleActor(!ToggleActor);
+    const commentUpdate = (newComment)=>{
+        if (newComment.length > 0) {
+            //삭제시-댓글이 배열 형태일때,삭제 후 남은 것만 다시 저장
+            setCommentList([...newComment])
+        } else {
+            //댓글 하나씩 추가해줄때 원래 것에 추가
+            setCommentList([...CommentList,newComment]);
+        }
+    }
     return (
         <div style={{width:'85%',margin:'1rem auto'}}>
 
@@ -43,7 +56,7 @@ function VideoDetail(props) {
             />}
             <div>
             
-                <Favorite movieId={movieId} movieInfo={MovieDetailInfo}/>
+                {userId&&<Favorite movieId={movieId} movieInfo={MovieDetailInfo}/>}
                 <MovieInfo movie={MovieDetailInfo} />    
     
                 {ToggleActor &&
@@ -62,6 +75,7 @@ function VideoDetail(props) {
                 <div className='toggle_container'>
                     <button className='toggle_btn' onClick={actorToggleHandler}>출연배우 목록</button>
                 </div>
+                <Comment movieId={movieId} commentList={CommentList} commentUpdate={commentUpdate} />
             </div>
         </div>
     )
