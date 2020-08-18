@@ -2,10 +2,11 @@ import React,{useState,useEffect, Fragment} from 'react'
 import { useSelector } from 'react-redux';
 import Axios from 'axios';
 import SingleComment from './SingleComment';
+import './Comment.css';
 
 function Comment(props) {
     const user = useSelector(state=>state.user);
-    const {userData : { _id :userId }} = user;
+    const {userData : { _id :userId,image }} = user;
     const [CommentValue,setCommentValue] = useState([]);
     const { commentList,commentUpdate,movieId } =props;
     
@@ -31,13 +32,19 @@ function Comment(props) {
     const renderForm = ()=>{
         if (userId) {
             return (
-                <form onSubmit={handleSubmit}>
-                    <textarea 
-                    onChange={handleChange}
-                    value={CommentValue}
-                    placeholder='내용을 입력하세요.' />
-                    <button onClick={handleSubmit}>댓글 등록</button>
-                </form>
+                <Fragment>
+                    <div className='writer'>
+                        <img src={image} />
+                    </div>
+                    <form className='comment_form' onSubmit={handleSubmit}>
+                        <textarea 
+                        className='comment_textarea'
+                        onChange={handleChange}
+                        value={CommentValue}
+                        placeholder='내용을 입력하세요.' />
+                        <button className='comment_btn' onClick={handleSubmit}>댓글 등록</button>
+                    </form>
+                </Fragment>
             )
         } else {
             return (

@@ -1,6 +1,7 @@
 import React,{useState, Fragment} from 'react';
 import {useSelector} from 'react-redux';
 import Axios from 'axios';
+import './Comment.css';
 
 function SingleComment(props) {
     const user = useSelector(state=>state.user);
@@ -37,13 +38,16 @@ function SingleComment(props) {
     const renderForm =()=>{
         if (userId) {
             return (
-                <form onSubmit={handleSubmit}>
-                    <textarea 
-                    onChange={handleChange}
-                    value={CommentValue}
-                    placeholder='내용을 입력하세요.' />
-                    <button onClick={handleSubmit}>댓글 등록</button>
-                </form>
+                <Fragment>
+                    <form className='comment_form' onSubmit={handleSubmit}>
+                        <textarea
+                        className='comment_textarea' 
+                        onChange={handleChange}
+                        value={CommentValue}
+                        placeholder='내용을 입력하세요.' />
+                        <button className='comment_btn' onClick={handleSubmit}>댓글 등록</button>
+                    </form>
+                </Fragment>
             )
         } else {
             return (
@@ -54,12 +58,12 @@ function SingleComment(props) {
     const renderComment=()=>{
         return (
             <Fragment>
-                <div className='single_writer'>
+                <div className='writer'>
                     <img src={writer.image} />
                 </div>
                 <div className='single_info'>
-                    <span>{writer.name}</span>
-                    <p>{content}</p>
+                    <span className='writer_name'>{writer.name}</span>
+                    <p className='comment'>{content}</p>
                 </div>
             </Fragment>
         )
@@ -67,6 +71,7 @@ function SingleComment(props) {
     return (
         <div className='single_comment_container'>
             {renderComment()}
+            <p onClick={toggleReply}>답글 보기</p>
             {OpenReply && renderForm()}
         </div>
     )

@@ -1,0 +1,30 @@
+.comment_container {
+    display: grid;
+    grid-template-columns: 1fr 11fr;
+    margin:1rem 0;
+}
+.writer img {
+    border-radius: 50%;
+    height: 10vh;
+}
+.writer_name {
+    font-weight: 500;
+    font-size:1rem;
+}
+.comment {
+    margin-top: .5rem;
+    font-weight: 450;
+}
+.comment_form {
+ display: flex;
+}
+.comment_textarea {
+    width: 85%;
+    border-radius: 10px;
+    border:1px solid rgba(0,0,0,.3);
+}
+.comment_btn {
+    width: 15%;
+    border-radius: 10px;
+    border:1px solid rgba(0,0,0,.3);
+}
