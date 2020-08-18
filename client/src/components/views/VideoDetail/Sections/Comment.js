@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import Axios from 'axios';
 import SingleComment from './SingleComment';
 import './Comment.css';
+import ReplyComment from './ReplyComment';
 
 function Comment(props) {
     const user = useSelector(state=>state.user);
@@ -32,7 +33,7 @@ function Comment(props) {
     const renderForm = ()=>{
         if (userId) {
             return (
-                <Fragment>
+                <div className='root_form'>
                     <div className='writer'>
                         <img src={image} />
                     </div>
@@ -44,7 +45,7 @@ function Comment(props) {
                         placeholder='내용을 입력하세요.' />
                         <button className='comment_btn' onClick={handleSubmit}>댓글 등록</button>
                     </form>
-                </Fragment>
+                </div>
             )
         } else {
             return (
@@ -55,14 +56,19 @@ function Comment(props) {
 
     const renderComment = commentList && commentList.map((comment,index)=>{
         return (
-            <Fragment key={index}>
-                <SingleComment 
-                    writer={comment.writer} 
-                    content={comment.content}  
-                    movieId={movieId} 
-                    responseTo={comment._id}
-                    commentUpdate={commentUpdate}/>
-            </Fragment>
+            !comment.responseTo&&
+                <Fragment key={index}>
+                    <SingleComment 
+                        comment={comment}
+                        movieId={movieId} 
+                        commentUpdate={commentUpdate}/>
+                    <ReplyComment
+                        movieId={movieId} 
+                        commentList={commentList}
+                        parentCommentId={comment._id}
+                        commentUpdate={commentUpdate} 
+                    />
+                </Fragment>
         )
     })
 

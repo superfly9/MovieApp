@@ -1,4 +1,13 @@
 .comment_container {
+    display: flex;
+    flex-direction: column;
+}
+.root_form {
+    display: grid;
+    grid-template-columns: 1fr 11fr;
+    margin:1rem 0;
+}
+.single_comment_container {
     display: grid;
     grid-template-columns: 1fr 11fr;
     margin:1rem 0;

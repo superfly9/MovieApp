@@ -5,14 +5,13 @@ import './Comment.css';
 
 function SingleComment(props) {
     const user = useSelector(state=>state.user);
-    const {movieId,commentUpdate,writer,content,responseTo}=props;
+    const {movieId,commentUpdate,comment}=props;
     const {userData : { _id :userId }}=user;
     const [OpenReply,setOpenReply]=useState(false);
     const [CommentValue,setCommentValue]=useState('');
     const toggleReply=()=>setOpenReply(!OpenReply);
     const handleChange=(event)=>{
         const {target:{value}}=event;
-        console.log('Value:',value);
         setCommentValue(value);
     }
     const handleSubmit=(e)=>{
@@ -21,7 +20,7 @@ function SingleComment(props) {
             writer:userId,
             movieId,
             content:CommentValue,
-            responseTo
+            responseTo:comment._id
         }
         Axios.post('/comment/save',body)
         .then(response=>{
@@ -58,14 +57,14 @@ function SingleComment(props) {
     const renderComment=()=>{
         return (
             <Fragment>
-                <div className='writer'>
-                    <img src={writer.image} />
-                </div>
-                <div className='single_info'>
-                    <span className='writer_name'>{writer.name}</span>
-                    <p className='comment'>{content}</p>
-                </div>
-            </Fragment>
+                    <div className='writer'>
+                    <img src={comment.writer.image} />
+                    </div>
+                    <div className='single_info'>
+                        <span className='writer_name'>{comment.writer.name}</span>
+                        <p className='comment'>{comment.content}</p>
+                    </div>
+                </Fragment>
         )
     }
     return (
