@@ -31,10 +31,21 @@ function VideoDetail(props) {
             .then(response=>{
                 setCrewInfo([...response.data.cast.splice(0,12)])
             })
+
+        Axios.post('/comment/getComment',{movieId})
+            .then(response=>{
+                if (response.data.success) {
+                    console.log('commentList:',response.data.commentList)
+                    setCommentList(response.data.commentList);
+                } else {
+                    alert('댓글을 가져오는 데 실패했습니다.');
+                }
+            })
     },[]);
     const actorToggleHandler =()=>setToggleActor(!ToggleActor);
     const commentUpdate = (newComment)=>{
-        if (newComment.length > 0) {
+        console.log('new Comment:',newComment)
+        if (newComment && newComment.length > 0) {
             //삭제시-댓글이 배열 형태일때,삭제 후 남은 것만 다시 저장
             setCommentList([...newComment])
         } else {

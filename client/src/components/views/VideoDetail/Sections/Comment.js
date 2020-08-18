@@ -1,26 +1,29 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect, Fragment} from 'react'
 import { useSelector } from 'react-redux';
 import Axios from 'axios';
+import SingleComment from './SingleComment';
 
 function Comment(props) {
-    const [CommentValue,setCommentValue] = useState([]);
-    const { commentList,commentUpdate,movieId } =props;
     const user = useSelector(state=>state.user);
     const {userData : { _id :userId }} = user;
+    const [CommentValue,setCommentValue] = useState([]);
+    const { commentList,commentUpdate,movieId } =props;
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        //writer:댓글 작성자
         const body =  {writer:userId,movieId,content:CommentValue}
+        console.log('body:',body)
         Axios.post('/comment/save',body)
-            .then(response=>{
-                if (response.data.success) {
-                    //새로 생긴 코멘트 업데이트
-                    commentUpdate()
-                } else {
-                    alert('댓글 생성에 실패했습니다.')
-                }
-            })
+        .then(response=>{
+            if (response.data.success) {
+                //새로 생긴 코멘트 업데이트
+                console.log('rootCOmment;',response.data.commentList)
+                commentUpdate(response.data.commentList);
+            } else {
+                alert('댓글 생성에 실패했습니다.')
+            }
+        })
+        setCommentValue('')
     }
     const handleChange  = (e)=>{
         setCommentValue(e.target.value);
@@ -45,9 +48,14 @@ function Comment(props) {
 
     const renderComment = commentList && commentList.map((comment,index)=>{
         return (
-            <div>
-                good
-            </div>
+            <Fragment key={index}>
+                <SingleComment 
+                    writer={comment.writer} 
+                    content={comment.content}  
+                    movieId={movieId} 
+                    responseTo={comment._id}
+                    commentUpdate={commentUpdate}/>
+            </Fragment>
         )
     })
 
@@ -55,10 +63,10 @@ function Comment(props) {
         <div>
             <h2>댓글</h2>
             <hr />
-            <form onSubmit={handleSubmit} style={{display:'flex',flexDirection:'column'}}>
+            <div className='comment_container'>
                 {renderForm()}
                 {renderComment}
-            </form>
+            </div>
         </div>
     )
 }

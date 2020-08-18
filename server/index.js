@@ -28,6 +28,7 @@ app.use(cookieParser());
 
 app.use('/users', require('./routes/users'));
 app.use('/favorite',require('./routes/favorite'))
+app.use('/comment',require('./routes/comment'));
 app.use('/uploads', express.static('uploads'));
 
 if (process.env.NODE_ENV === "production") {

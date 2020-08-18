@@ -13,7 +13,6 @@ function MovieInfo(props) {
         popularity,
         tagline
     }} = props;
-    console.log(popularity)
 
     let changeDollartoWon;
     if (revenue) {
