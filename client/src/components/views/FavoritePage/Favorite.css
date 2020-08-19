@@ -19,3 +19,7 @@ td:nth-child(2) {
 .remove_btn {
     width: 100%;
 }
+.popover img {
+    height: 35vh;
+    width: 25vw;
+}

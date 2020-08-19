@@ -27,7 +27,6 @@ favoriteRouter.post('/removeFromFavorite',(req,res)=>{
     const {body : {movieId,userFrom}} = req;
     Favorite.findOneAndDelete({movieId,userFrom})
         .exec((err,removedItem)=>{
-            console.log('removed from Favorite:',removedItem);
             if (err) return res.json({err,success:false});
             res.json({success:true});
         })

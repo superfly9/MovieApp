@@ -1,6 +1,8 @@
 import React, { useEffect,useState } from 'react'
 import Axios from 'axios';
+import {Popover} from 'antd';
 import './Favorite.css';
+import { IMAGE_BASE_URL } from '../../Config';
 
 function FavoritePage() {
     const [Favorited,setFavorited] = useState([]);
@@ -8,7 +10,6 @@ function FavoritePage() {
         Axios.post(`/favorite/getFavoredMovie`,{userFrom : localStorage.getItem('userId')})
             .then(response=>{
                 if (response.data.success) {
-                    console.log(response.data.favorites)
                     setFavorited([...response.data.favorites])
                 } else {
                     alert('영화 정보를 가져오는 데 실패했습니다.');
@@ -27,6 +28,14 @@ function FavoritePage() {
                 }
             })
     }
+    const content = (img)=>{
+        const url = `${IMAGE_BASE_URL}w500${img}`
+        return (
+            <div className='popover'>
+                <img src={url}/>
+            </div>
+        )
+    }
     return (
         <div className='favorite_container'>
             <h2>내가 좋아하는 영화 </h2>
@@ -43,7 +52,9 @@ function FavoritePage() {
                 <tbody>
                     {Favorited && Favorited.map((movieItem,index)=>(
                         <tr key={index}>
-                            <td>{movieItem.movieTitle}</td>
+                            <Popover content={content(movieItem.moviePost)} title={movieItem.movieTitle}>
+                                <td>{movieItem.movieTitle}</td>
+                            </Popover>
                             <td>{movieItem.movieRunTime}분</td>
                             <td><button className='remove_btn' onClick={()=>removeFavoriteMovie(movieItem._id,movieItem.userFrom)}>삭제</button></td>
                         </tr>

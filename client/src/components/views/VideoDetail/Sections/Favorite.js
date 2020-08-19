@@ -3,7 +3,7 @@ import Axios from 'axios'
 import './Favorite.css';
 
 function Favorite(props) {
-    const { movieId, movieInfo:{ title:movieTitle, runtime : movieRunTime}} = props;
+    const {movieId, movieInfo:{ poster_path:moviePost, title:movieTitle, runtime : movieRunTime}} = props;
     const userId =localStorage.getItem('userId');
     const [Favorited,setFavorited] = useState(false);
     const [FavoriteNumber,setFavoriteNumber] = useState(0);
@@ -11,7 +11,8 @@ function Favorite(props) {
         movieId ,
         movieTitle,
         movieRunTime,
-        userFrom: userId
+        userFrom: userId,
+        moviePost
     }
     useEffect(()=>{
         Axios.post(`/favorite/favoriteNumber`,body)
