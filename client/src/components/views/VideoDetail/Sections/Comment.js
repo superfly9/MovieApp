@@ -14,7 +14,6 @@ function Comment(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
         const body =  {writer:userId,movieId,content:CommentValue}
-        console.log('body:',body)
         Axios.post('/comment/save',body)
         .then(response=>{
             if (response.data.success) {

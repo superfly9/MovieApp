@@ -25,7 +25,7 @@ function SingleComment(props) {
         Axios.post('/comment/save',body)
         .then(response=>{
             if (response.data.success) {
-                //새로 생긴 코멘트 업데이트
+                console.log('CommentList:',response.data.commentList)
                 commentUpdate(response.data.commentList);
             } else {
                 alert('댓글 생성에 실패했습니다.')
@@ -70,7 +70,7 @@ function SingleComment(props) {
     return (
         <div className='single_comment_container'>
             {renderComment()}
-            <p onClick={toggleReply}>답글 보기</p>
+            <p onClick={toggleReply}>댓글 달기</p>
             {OpenReply && renderForm()}
         </div>
     )
