@@ -7,14 +7,12 @@ commentRouter.post('/save',(req,res)=>{
     const { body : {writer,movieId,content}} = req;
     const comment = new Comment(req.body);
     comment.save((err,comment)=>{
-        console.log('1st check:',comment);
         if (err) return res.json({err,success:false});
-        Comment.find({writer,movieId})
+        Comment.findOne({writer,movieId,content})
             .populate('writer')
-            .exec((err,commentList)=>{
+            .exec((err,comment)=>{
                 if (err) return res.json({err,success:false});
-                console.log('new Comment:',commentList);
-                res.json({success:true,commentList})
+                res.json({success:true,comment})
             })
     })
 })
@@ -30,19 +28,18 @@ commentRouter.post('/getComment',(req,res)=>{
 })
 
 commentRouter.post('/delete',(req,res)=>{
-   const { body:{ responseTo,movieId,writer }} = req;
-   console.log('req.body',req.body)
-   Comment.findOneAndDelete({responseTo,movieId,writer})
+    
+   let { body:{ commentId ,movieId, }} = req;
+   Comment.findOneAndDelete({_id:commentId,movieId})
         .exec((err,deleted)=>{
         if (err) return res.json({err,result:false});
-        console.log('Deleted:',deleted)
         Comment.find({movieId})
-        .populate('writer')
-        .exec((err,commentList)=>{
-            if (err) return res.json({err,success:false});
-            //console.log('deleted comment:',commentList);
-            res.json({success:true,commentList})
-        })
+            .populate('writer')
+            .exec((err,commentList)=>{
+                if (commentList === null) commentList = [];
+                if (err) return res.json({err,result:false});
+                res.json({success:true,commentList})
+            })
     })
 });
 

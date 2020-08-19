@@ -25,8 +25,8 @@ function SingleComment(props) {
         Axios.post('/comment/save',body)
         .then(response=>{
             if (response.data.success) {
-                console.log('CommentList:',response.data.commentList)
-                commentUpdate(response.data.commentList);
+                commentUpdate(response.data.comment);
+                setOpenReply(false);
             } else {
                 alert('댓글 생성에 실패했습니다.')
             }
@@ -58,7 +58,7 @@ function SingleComment(props) {
         return (
             <Fragment>
                     <div className='writer'>
-                    <img src={comment.writer.image} />
+                        <img src={comment.writer.image} />
                     </div>
                     <div className='single_info'>
                         <span className='writer_name'>{comment.writer.name}</span>
@@ -67,18 +67,14 @@ function SingleComment(props) {
                 </Fragment>
         )
     }
-    const deleteComment=(responseTo)=>{
+    const deleteComment=(commentId)=>{
         const body = {
-            responseTo,
-            movieId,
-            writer:userId
+            commentId,
+            movieId
         }
-        console.log('body:',body)
         Axios.post('/comment/delete',body)
             .then(response=>{
                 if (response.data.success) {
-                    console.log(response.data);
-                    //commentList : [{},{}] ...
                     commentUpdate(response.data.commentList)
                 } else {
                     alert('댓글 삭제에 실패했습니다.');
@@ -87,11 +83,11 @@ function SingleComment(props) {
     }
     return (
         <div className='single_comment_container'>
-            {renderComment()}
-                {userId &&
+            {comment.writer&&renderComment()}
+                {userId===comment.writer._id &&
                 <div className='comment_action'>
                     <p onClick={toggleReply}>댓글 달기</p>
-                    <p onClick={()=>deleteComment(comment.responseTo)}>댓글 삭제</p>
+                    <p onClick={()=>deleteComment(comment._id)}>댓글 삭제</p>
                 </div>
                 }       
             {OpenReply && renderForm()}

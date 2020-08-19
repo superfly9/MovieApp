@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect,useState } from 'react'
 import SingleComment from './SingleComment'
-
+//로그인 한 유저의 댓글만 바로 리렌더링 되고,나머지는 새로고침시 ㅂ인다
+//responseTo: singleComment생성시 생긴 내 commentId
 function ReplyComment(props) {
     const {parentCommentId, commentUpdate,commentList,movieId} = props;
     const [CommentLength,setCommentLenght] = useState(0);

@@ -17,9 +17,7 @@ function Comment(props) {
         Axios.post('/comment/save',body)
         .then(response=>{
             if (response.data.success) {
-                //새로 생긴 코멘트 업데이트
-                console.log('rootCOmment;',response.data.commentList)
-                commentUpdate(response.data.commentList);
+                commentUpdate(response.data.comment);
             } else {
                 alert('댓글 생성에 실패했습니다.')
             }
@@ -53,7 +51,7 @@ function Comment(props) {
         }
     }
 
-    const renderComment = commentList && commentList.map((comment,index)=>{
+    const renderComment = commentList.length>0 && commentList.map((comment,index)=>{
         return (
             !comment.responseTo&&
                 <Fragment key={index}>
