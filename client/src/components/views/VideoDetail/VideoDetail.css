@@ -4,6 +4,10 @@
 .ant-descriptions-bordered {
     border:none;
 }
+.detail_container {
+    width:85%;
+    margin:3rem auto
+}
 .ant-descriptions-row,
 .ant-descriptions-item-content,
 .ant-descriptions-item-label {

@@ -29,4 +29,21 @@ commentRouter.post('/getComment',(req,res)=>{
         })
 })
 
+commentRouter.post('/delete',(req,res)=>{
+   const { body:{ responseTo,movieId,writer }} = req;
+   console.log('req.body',req.body)
+   Comment.findOneAndDelete({responseTo,movieId,writer})
+        .exec((err,deleted)=>{
+        if (err) return res.json({err,result:false});
+        console.log('Deleted:',deleted)
+        Comment.find({movieId})
+        .populate('writer')
+        .exec((err,commentList)=>{
+            if (err) return res.json({err,success:false});
+            //console.log('deleted comment:',commentList);
+            res.json({success:true,commentList})
+        })
+    })
+});
+
 module.exports = commentRouter;

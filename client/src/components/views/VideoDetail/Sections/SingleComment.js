@@ -67,10 +67,33 @@ function SingleComment(props) {
                 </Fragment>
         )
     }
+    const deleteComment=(responseTo)=>{
+        const body = {
+            responseTo,
+            movieId,
+            writer:userId
+        }
+        console.log('body:',body)
+        Axios.post('/comment/delete',body)
+            .then(response=>{
+                if (response.data.success) {
+                    console.log(response.data);
+                    //commentList : [{},{}] ...
+                    commentUpdate(response.data.commentList)
+                } else {
+                    alert('댓글 삭제에 실패했습니다.');
+                }
+            })
+    }
     return (
         <div className='single_comment_container'>
             {renderComment()}
-            <p onClick={toggleReply}>댓글 달기</p>
+                {userId &&
+                <div className='comment_action'>
+                    <p onClick={toggleReply}>댓글 달기</p>
+                    <p onClick={()=>deleteComment(comment.responseTo)}>댓글 삭제</p>
+                </div>
+                }       
             {OpenReply && renderForm()}
         </div>
     )

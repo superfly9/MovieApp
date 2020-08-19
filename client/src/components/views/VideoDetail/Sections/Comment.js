@@ -1,4 +1,4 @@
-import React,{useState,useEffect, Fragment} from 'react'
+import React,{useState,Fragment} from 'react'
 import { useSelector } from 'react-redux';
 import Axios from 'axios';
 import SingleComment from './SingleComment';

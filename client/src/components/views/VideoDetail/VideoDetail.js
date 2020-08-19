@@ -44,17 +44,12 @@ function VideoDetail(props) {
     },[]);
     const actorToggleHandler =()=>setToggleActor(!ToggleActor);
     const commentUpdate = (newComment)=>{
-        console.log('new Comment:',newComment)
         if (newComment && newComment.length > 0) {
-            //삭제시-댓글이 배열 형태일때,삭제 후 남은 것만 다시 저장
             setCommentList([...newComment])
-        } else {
-            //댓글 하나씩 추가해줄때 원래 것에 추가
-            setCommentList([...CommentList,newComment]);
         }
     }
     return (
-        <div style={{width:'85%',margin:'1rem auto'}}>
+        <div className='detail_container'>
 
             {MovieDetailInfo.poster_path&&<MainImage 
                 backImage={`${IMAGE_BASE_URL}w1280${MovieDetailInfo.backdrop_path}`}
