@@ -10,7 +10,6 @@ import Favorite from './Sections/Favorite';
 import Comment from './Sections/Comment';
 import { useSelector } from 'react-redux';
 
-//삭제 후 남아있는 comment의 value와 같은 애는 생성이 안됨
 function VideoDetail(props) {
     const {match : {params : {movieId}}} = props;
     const [MovieDetailInfo,setMovieDetailInfo] = useState({});

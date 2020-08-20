@@ -61,7 +61,7 @@ function Favorite(props) {
         <div className='favorite_btn_container'>
             <button className='favorite_btn' 
             onClick={handleFavorite}
-            >{Favorited ? 'Not Favorite' : 'Add to Favorite'} : {FavoriteNumber}</button>
+            >{Favorited ? '취소하기' : '내 영화에 추가하기'} : {FavoriteNumber}</button>
         </div>
     )
 }

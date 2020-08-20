@@ -17,7 +17,12 @@ td:nth-child(2) {
     width: 40%;
 }
 .remove_btn {
-    width: 100%;
+    width: 70%;
+    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,.3);
+    display: flex;
+    justify-content: center;
+    padding: .5rem;
 }
 .popover img {
     height: 35vh;
