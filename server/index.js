@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const helmet = require('helmet');
 const cors = require('cors')
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -20,7 +21,7 @@ const corsOption =  {
 }
   
 
-
+app.use(helmet());
 app.use(cors(corsOption))
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

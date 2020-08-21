@@ -8,5 +8,6 @@ dev.js
 npm-debug.log*
 yarn-debug.kog*
 yarn-error.log*
+Config.js
 
 .vscode
