@@ -3,10 +3,11 @@ import GridCard from '../Util/GridCard'
 import Axios from 'axios';
 import {Row} from 'antd';
 import './LandingPage.css';
-import { API_URL, API_KEY, IMAGE_BASE_URL } from '../../Config';
 import SearchInput from '../Util/SearchInput';
+import { IMAGE_BASE_URL,API_URL,API_KEY } from '../../Config.js';
 
 function LandingPage() {
+    console.log(API_KEY,IMAGE_BASE_URL,API_URL)
     const [Movies,setMovies] = useState([]);
     const [MainMovie,setMainMovie] = useState(null);
     const [CurrentPage,setCurrentPage] = useState(1);
@@ -15,7 +16,6 @@ function LandingPage() {
         Axios.get(endPoint)     
                 .then(response=>{
                     const {data : {results,page}} = response;
-                    console.log(results[0])
                     setMovies([...Movies,...results]);
                     setMainMovie(results[0]);
                     setCurrentPage(page);

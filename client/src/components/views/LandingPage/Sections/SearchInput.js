@@ -3,10 +3,13 @@ import {useDispatch} from 'react-redux';
 import './SearchInput.css';
 import Axios from 'axios';
 import { searchMovie } from '../../../../_actions/movie_actions';
-import { API_KEY,SEARCH_URL } from '../../../Config';
+import {SEARCH_URL,API_KEY,API_URL } from '../../../Config';
 import {Row,Col} from 'antd';
+import dotenv from 'dotenv';
 
+dotenv.config();
 function SearchInput(props) {
+    const API_KEY = process.env.API_KEY;
     const dispatch = useDispatch();
     const {searchPage} = props;
     const [searchValue,setSearchValue] = useState('');
