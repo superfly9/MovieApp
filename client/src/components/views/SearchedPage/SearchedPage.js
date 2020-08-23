@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react'
 import {useSelector} from 'react-redux';
-import GridCard from '../views/Util/GridCard';
-import { IMAGE_BASE_URL } from '../Config';
 import './SearchedPage.css';
-import SearchInput from '../views/LandingPage/Sections/SearchInput';
+import { IMAGE_BASE_URL } from '../../Config';
+import SearchInput from '../Util/SearchInput';
+import GridCard from '../Util/GridCard';
 
 function SearchedPage(props) {
     const movie = useSelector(state=>state.movie);

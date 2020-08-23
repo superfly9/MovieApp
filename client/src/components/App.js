@@ -8,7 +8,7 @@ import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer"
 import VideoDetail from './views/VideoDetail/VideoDetail';
 import FavoritePage from './views/FavoritePage/FavoritePage';
-import SearchedPage from './SearchedPage/SearchedPage';
+import SearchedPage from './views/SearchedPage/SearchedPage';
 
 function App() {
   return (
