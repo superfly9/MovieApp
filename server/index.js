@@ -20,9 +20,8 @@ const corsOption =  {
     credentials:true
 }
   
-
-app.use(helmet());
 app.use(cors(corsOption))
+// app.use(helmet());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -32,6 +31,7 @@ app.use('/favorite',require('./routes/favorite'))
 app.use('/comment',require('./routes/comment'));
 app.use('/uploads', express.static('uploads'));
 
+console.log(process.env.NODE_ENV)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 
