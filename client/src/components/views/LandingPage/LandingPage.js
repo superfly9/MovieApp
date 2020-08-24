@@ -7,7 +7,6 @@ import SearchInput from '../Util/SearchInput';
 import { IMAGE_BASE_URL,API_URL,API_KEY } from '../../Config.js';
 
 function LandingPage() {
-    console.log(API_KEY,IMAGE_BASE_URL,API_URL)
     const [Movies,setMovies] = useState([]);
     const [MainMovie,setMainMovie] = useState(null);
     const [CurrentPage,setCurrentPage] = useState(1);
