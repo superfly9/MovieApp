@@ -29,7 +29,6 @@ app.use('/favorite',require('./routes/favorite'))
 app.use('/comment',require('./routes/comment'));
 app.use('/uploads', express.static('uploads'));
 
-console.log(process.env.NODE_ENV)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 

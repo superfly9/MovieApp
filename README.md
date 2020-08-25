@@ -3,7 +3,7 @@
 ####
 - 주소:https://react-movie-first.herokuapp.com/
 ####
-![landing-page](https://github.com/superfly9/movieApp/blob/master/movieApp.gif)
+![landing-page](https://github.com/superfly9/movieApp/blob/master3/img/movieApp.gif)
 
 ### 사용한 것
 - React/Redux/ES6
@@ -18,4 +18,4 @@
 
 
 ### redux flow-chart
-![landing-page](https://github.com/superfly9/movieApp/blob/master/flow.png)
+![landing-page](https://github.com/superfly9/movieApp/blob/master/img/reduxflow.png)
