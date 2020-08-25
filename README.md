@@ -3,7 +3,7 @@
 ####
 - 주소:https://react-movie-first.herokuapp.com/
 ####
-![landing-page](https://github.com/superfly9/movieApp/blob/master3/img/movieApp.gif)
+![landing-page](https://github.com/superfly9/movieApp/blob/master/img/movieApp.gif)
 
 ### 사용한 것
 - React/Redux/ES6
